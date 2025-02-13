@@ -1,8 +1,20 @@
 ---
-import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <Welcome />
+  <div class="container">
+    <section
+      class="w-[70%] mx-auto py-10 px-10 grid grid-cols-2 items-center justify-items-center"
+    >
+      <h1 class="w-110 text-cyan-700">
+        Rien n'est plus fort que le lien qui unit un Pokémon à son dresseur.
+      </h1>
+      <img
+        src="/src/assets/images/pokeball.jpg"
+        alt="Pokeball"
+        class="w-100 rounded-4xl"
+      />
+    </section>
+  </div>
 </Layout>
