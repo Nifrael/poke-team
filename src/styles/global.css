@@ -1,1 +1,65 @@
 @import "tailwindcss";
+@import "@fontsource/bungee";
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --cream-color: rgba(252, 250, 204, 0.5);
+  --text-color: rgb(66, 66, 66);
+  --base-size: 1rem;
+  --scale: 1.25;
+  --h5: calc(var(--base-size) * var(--scale));
+  --h4: calc(var(--h5) * var(--scale));
+  --h3: calc(var(--h4) * var(--scale));
+  --h2: calc(var(--h3) * var(--scale));
+  --h1: calc(var(--h2) * var(--scale));
+  --small-text: calc(var(--base-size) / var(--scale));
+  --font-title: "Bungee";
+}
+
+body {
+  /* background-color: var(--cream-color); */
+  color: var(--text-color);
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: var(--h1);
+  font-family: var(--font-title);
+}
+
+h2 {
+  font-size: var(--h2);
+  font-family: var(--font-title);
+}
+
+h3 {
+  font-size: var(--h3);
+  font-family: var(--font-title);
+}
+
+h4 {
+  font-size: var(--h4);
+  font-family: var(--font-title);
+}
+
+h5 {
+  font-size: var(--h5);
+}
