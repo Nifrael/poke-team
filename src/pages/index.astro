@@ -1,5 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getPokemon } from "../services/pokemonFetch";
+
+const pokemonsData = await getPokemon();
+
+console.log(pokemonsData);
 ---
 
 <Layout>
@@ -16,5 +21,15 @@ import Layout from "../layouts/Layout.astro";
         class="w-100 rounded-4xl"
       />
     </section>
+    <div>
+      {pokemonsData.map((pokemon) =>
+        <h2>{pokemon.name}</h2>
+        <img src={pokemon.image} alt={pokemon.name} />
+          <div>{pokemon.types.map((type) =>
+          <h3>{type.name}</h3>
+          <img src={type.image} alt={type.name} />
+          )}</div>
+      )}
+    </div>
   </div>
 </Layout>
