@@ -6,7 +6,7 @@ const pokemonsData = await getPokemon();
 
 <div class="py-10">
   {pokemonsData.map((pokemon) =>
-  <div class="my-10 mx-auto w-[50%] border-amber-600 border-4 grid grid-cols-2 grid-rows-3 rounded-3xl">
+  <div class="my-10 mx-auto w-[50%] border-amber-600 border-4 grid grid-cols-2 grid-rows-3 rounded-3xl bg-white/30 backdrop-blur-xl">
     <h2 class="row-span-1">{pokemon.name}</h2>
     <img class="row-span-2 col-span-1" src={pokemon.image} alt={pokemon.name} />
     <div class="row-span-3">{pokemon.types.map((type: { name: string; image: string }) =>
