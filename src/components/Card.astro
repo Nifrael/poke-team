@@ -5,14 +5,24 @@ const pokemonsData = await getPokemon();
 ---
 
 <div class="py-10">
-  {pokemonsData.map((pokemon) =>
-  <div class="my-10 mx-auto w-[50%] border-amber-600 border-4 grid grid-cols-2 grid-rows-3 rounded-3xl bg-white/30 backdrop-blur-xl">
-    <h2 class="row-span-1">{pokemon.name}</h2>
-    <img class="row-span-2 col-span-1" src={pokemon.image} alt={pokemon.name} />
-    <div class="row-span-3">{pokemon.types.map((type: { name: string; image: string }) =>
-      <h3>{type.name}</h3>
-      <img src={type.image} alt="" />
-    )}</div>
-  </div>
-  )}
+  {
+    pokemonsData.map((pokemon) => (
+      <div class="my-10 mx-auto w-[50%] border-amber-600 border-4 grid grid-cols-2 grid-rows-3 rounded-3xl bg-white/30 backdrop-blur-xl">
+        <h2 class="row-[1] col-span-2">{pokemon.name}</h2>
+        <img
+          class="row-span-2 row-start-2 col-[1]"
+          src={pokemon.image}
+          alt={pokemon.name}
+        />
+        <div class="py-10 col-span-2 row-[3] flex flex-row justify-evenly items-center">
+          {pokemon.types.map((type: { name: string; image: string }) => (
+            <div class="flex flex-col items-center">
+              <img src={type.image} alt="" class="w-10 h-10 rounded-md" />
+              <h5>{type.name}</h5>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))
+  }
 </div>

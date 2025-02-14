@@ -1,5 +1,11 @@
+let cachedPokemons;
+
 export async function getPokemon() {
-  const names = ["lokhlass", "luxray", "bulbizarre", "givrali"];
+  if (cachedPokemons) {
+    return cachedPokemons;
+  }
+
+  const names = ["lokhlass", "luxray", "bulbizarre", "givrali", "ronflex"];
 
   const requests = names.map(async (name) => {
     const response = await fetch(`https://tyradex.app/api/v1/pokemon/${name}`);
@@ -20,6 +26,6 @@ export async function getPokemon() {
       },
     };
   });
-  const results = await Promise.all(requests);
-  return results;
+  cachedPokemons = await Promise.all(requests);
+  return cachedPokemons;
 }
