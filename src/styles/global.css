@@ -22,10 +22,11 @@
 }
 
 body {
-  background-image: url("../assets/background.svg");
+  /* background-image: url("../assets/background.svg");
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color: rgba(243, 243, 243, 0.874);
   color: var(--text-color);
   margin: 0;
   min-height: 100vh;
@@ -65,4 +66,44 @@ h4 {
 
 h5 {
   font-size: var(--h5);
+}
+
+.ball {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(20px);
+  z-index: -1;
+  position: absolute;
+  rotate: 95deg;
+}
+
+.poke {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.5102415966386555) 0%,
+    rgba(205, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 0.5018382352941176) 50%,
+    rgba(242, 242, 242, 1) 73%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  border: 5px solid black;
+  left: -5%;
+}
+
+.super {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 31, 255, 1) 0%,
+    rgba(255, 0, 0, 0.8463760504201681) 10%,
+    rgba(13, 23, 157, 1) 20%,
+    rgba(3, 0, 219, 1) 30%,
+    rgba(255, 0, 0, 1) 40%,
+    rgba(0, 14, 255, 1) 50%,
+    rgba(255, 255, 255, 1) 70%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  border: 5px solid black;
+  top: 50%;
+  right: -5%;
 }
