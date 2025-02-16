@@ -4,25 +4,55 @@ import { getPokemon } from "../services/pokemonFetch";
 const pokemonsData = await getPokemon();
 ---
 
-<div class="py-10">
-  {
-    pokemonsData.map((pokemon) => (
-      <div class="my-10 mx-auto w-[50%] border-amber-600 border-4 grid grid-cols-2 grid-rows-3 rounded-3xl bg-white/30 backdrop-blur-xl">
-        <h2 class="row-[1] col-span-2">{pokemon.name}</h2>
-        <img
-          class="row-span-2 row-start-2 col-[1]"
-          src={pokemon.image}
-          alt={pokemon.name}
-        />
-        <div class="py-10 col-span-2 row-[3] flex flex-row justify-evenly items-center">
-          {pokemon.types.map((type: { name: string; image: string }) => (
-            <div class="flex flex-col items-center">
-              <img src={type.image} alt="" class="w-10 h-10 rounded-md" />
-              <h5>{type.name}</h5>
-            </div>
-          ))}
+<div class="relative">
+  <div class="ball poke"></div>
+  <div class="ball super"></div>
+  <div class="big-grid py-10 w-[80%] mx-auto">
+    {
+      pokemonsData.map((pokemon) => (
+        <div class="card my-6 mx-auto grid grid-cols-2 grid-rows-3-auto bg-white/30 backdrop-blur-xl">
+          <img
+            class="row-[1] col-span-2 mx-auto w-[60%]"
+            src={pokemon.image}
+            alt={pokemon.name}
+          />
+          <h3 class="row-[2] col-span-2 mx-auto pt-8 pb-2">{pokemon.name}</h3>
+          <div class="pt-4 pb-6 col-span-2 row-[3] flex flex-row justify-evenly items-center">
+            {pokemon.types.map((type: { name: string; image: string }) => (
+              <div class="flex flex-col items-center">
+                <img src={type.image} alt="" class="w-8 h-8 rounded-md" />
+                <h5>{type.name}</h5>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    ))
-  }
+      ))
+    }
+  </div>
 </div>
+
+<style>
+  .card {
+    border: 3px solid rgb(207, 207, 207);
+    border-radius: 5%;
+    transition: 0.3s ease-in-out;
+  }
+
+  .card:hover {
+    background-color: rgba(240, 254, 255, 0.539);
+    scale: 1.05;
+  }
+
+  .big-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  @media (width < 768px) {
+    .big-grid {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+</style>
