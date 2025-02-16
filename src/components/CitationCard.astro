@@ -1,7 +1,18 @@
+---
+import { Image } from "astro:assets";
+import Sacha from "../assets/images/Sacha.jpg";
+---
+
 <section
   class="w-[100%] mt-20 mx-auto py-10 pt-30 px-10 bg-white rounded-2xl relative"
 >
-  <img id="sacha" src="src/assets/images/Sacha.jpg" alt="Sacha et Pikachu" />
+  <Image
+    src={Sacha}
+    alt="Sacha et Pikachu"
+    id="sacha"
+    class="w-[150px] h-[150px]"
+  />
+  <!-- <img id="sacha" src="src/assets/images/Sacha.jpg" alt="Sacha et Pikachu" /> -->
   <h3 class="text-cyan-700 text-center">
     "Rien n'est plus fort que le lien qui unit un Pokémon à son dresseur."
   </h3>
@@ -63,8 +74,8 @@
 
 <style>
   #sacha {
-    width: 150px;
-    height: 150px;
+    /* width: 150px;
+    height: 150px; */
     border-radius: 50%;
     position: absolute;
     left: 50%;
