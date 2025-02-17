@@ -1,0 +1,18 @@
+---
+import { Image } from "astro:assets";
+import Pikachu from "../assets/images/Pikachu.png";
+---
+
+<footer class="py-20">
+  <div class="container">
+    <h2>POKETEAM</h2>
+    <Image src={Pikachu} alt="Pikachu" class="w-32 mx-auto" />
+  </div>
+</footer>
+
+<style>
+  footer {
+    background-color: var(--text-color);
+    color: white;
+  }
+</style>
