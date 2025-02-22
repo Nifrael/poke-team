@@ -1,12 +1,29 @@
 ---
 import { Image } from "astro:assets";
-import Pikachu from "../assets/images/Pikachu.png";
+import Team from "../assets/images/Team.png";
 ---
 
-<footer class="py-20">
-  <div class="container flex flex-col">
-    <h2>POKETEAM</h2>
-    <Image src={Pikachu} alt="Pikachu" class="w-32 mx-auto" />
+<footer class="py-16">
+  <div class="container footer-grid items-center mx-5">
+    <div class="flex flex-col gap-3 md:row-[1] md:col-[2]">
+      <h3>POKETEAM</h3>
+      <h5>Team</h5>
+      <h5>Combats</h5>
+      <h5>Statistiques</h5>
+      <h5>Contact</h5>
+    </div>
+    <div class="flex flex-col gap-3 md:row-[1] md:col-[3]">
+      <h3>POKEDEX</h3>
+      <h5>Kanto</h5>
+      <h5>Johto</h5>
+      <h5>Hoenn</h5>
+      <h5>Sinnoh</h5>
+    </div>
+    <Image
+      src={Team}
+      alt="Pikachu"
+      class="w-[90%] mb-6 md:mb-0 md:w-[70%] mx-auto row-[1] md:col-[1] md:row-[1]"
+    />
   </div>
 </footer>
 
@@ -14,5 +31,24 @@ import Pikachu from "../assets/images/Pikachu.png";
   footer {
     background-color: var(--text-color);
     color: white;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+    grid-template-rows: 1fr;
+  }
+
+  @media (width < 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+
+    .footer-grid div:first-child,
+    .footer-grid div:nth-child(2) {
+      margin: 1rem;
+      padding-left: 2rem;
+    }
   }
 </style>
