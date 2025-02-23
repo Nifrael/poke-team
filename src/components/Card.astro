@@ -1,7 +1,19 @@
 ---
 import { getPokemon } from "../services/pokemonFetch";
 
-const pokemonsData = await getPokemon();
+const names = [
+  "lokhlass",
+  "luxray",
+  "bulbizarre",
+  "givrali",
+  "ronflex",
+  "cizayox",
+  "mentali",
+  "hericendre",
+  "milobellus",
+];
+
+const pokemonsData = await getPokemon(names);
 ---
 
 <div class="relative">

@@ -1,23 +1,11 @@
-let cachedPokemons;
+// let cachedPokemons;
 
-export async function getPokemon() {
-  if (cachedPokemons) {
-    return cachedPokemons;
-  }
+export async function getPokemon(pokemonNames) {
+  // if (cachedPokemons) {
+  //   return cachedPokemons;
+  // }
 
-  const names = [
-    "lokhlass",
-    "luxray",
-    "bulbizarre",
-    "givrali",
-    "ronflex",
-    "cizayox",
-    "mentali",
-    "hericendre",
-    "milobellus",
-  ];
-
-  const requests = names.map(async (name) => {
+  const requests = pokemonNames.map(async (name) => {
     const response = await fetch(`https://tyradex.app/api/v1/pokemon/${name}`);
     const data = await response.json();
 
@@ -36,6 +24,6 @@ export async function getPokemon() {
       },
     };
   });
-  cachedPokemons = await Promise.all(requests);
+  const cachedPokemons = await Promise.all(requests);
   return cachedPokemons;
 }
