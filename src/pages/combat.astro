@@ -1,15 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getPokemon } from "../services/pokemonFetch";
-
-console.log("test");
+import { createPokemon } from "../services/pokemonCombat"
 
 const chosenPokemon = "aquali";
-console.log(chosenPokemon);
 
 const aquali = await getPokemon([chosenPokemon]);
 
 console.log(aquali);
+
+const newPokemon = createPokemon(aquali)
+
+console.log(newPokemon)
+
+const defender = "mentali"
+
+const mentali = await getPokemon([defender])
+
+const pokemonTwo = createPokemon(mentali)
+
+console.log(pokemonTwo)
+
 ---
 
 <Layout>

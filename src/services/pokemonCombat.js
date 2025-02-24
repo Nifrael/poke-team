@@ -1,12 +1,27 @@
 import { getPokemon } from "./pokemonFetch";
 
-function setStatistic(pokemon) {
-  const health = pokemon.stats.hp;
-  const defense = pokemon.stats.def;
-  const attack = pokemon.stats.attack;
+function calculDamage(attaquant, defenseur) {
+  let multiplicateur = Math.random();
+  let damage = attaquant.attack * multiplicateur;
+  damage = Math.trunc(damage);
+  return damage;
 }
 
-function pokemonAttack(attacker, defender) {
-  const damage = attacker.stats.attack * Math.random();
-  const newHealth = defender.stats.hp - damage;
+class Pokemon {
+  constructor(data) {
+    this.name = data[0].name;
+    this.hp = data[0].stats.hp;
+    this.attack = data[0].stats.attack;
+    this.defense = data[0].stats.defense;
+    this.speed = data[0].stats.speed;
+    this.primaryType = data[0].types[0].name;
+    this.secondaryType = data[0].types[1] ? data[0].types[1].name : null;
+  }
+
+  useAttack(defenseur) {}
+}
+
+export function createPokemon(data) {
+  const pokemon = new Pokemon(data);
+  return pokemon;
 }
