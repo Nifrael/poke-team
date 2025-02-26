@@ -18,7 +18,10 @@ class Pokemon {
     this.secondaryType = data[0].types[1] ? data[0].types[1].name : null;
   }
 
-  useAttack(defenseur) {}
+  useAttack(defenseur) {
+    const degats = calculDamage(this, defenseur);
+    defenseur.hp -= degats;
+  }
 }
 
 export function createPokemon(data) {
