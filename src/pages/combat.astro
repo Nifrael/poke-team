@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getPokemon } from "../services/pokemonFetch";
-import { createPokemon } from "../services/pokemonCombat"
+import { createPokemon } from "../services/pokemonCombat";
 
 const chosenPokemon = "aquali";
 
@@ -9,27 +9,40 @@ const aquali = await getPokemon([chosenPokemon]);
 
 console.log(aquali);
 
-const newPokemon = createPokemon(aquali)
+const newPokemon = createPokemon(aquali);
 
-console.log(newPokemon)
+console.log(newPokemon);
 
-const defender = "mentali"
+const defender = "mentali";
 
-const mentali = await getPokemon([defender])
+const mentali = await getPokemon([defender]);
 
-const pokemonTwo = createPokemon(mentali)
+const pokemonTwo = createPokemon(mentali);
 
-console.log(pokemonTwo)
+console.log(pokemonTwo);
 
+const touche = newPokemon.useAttack(pokemonTwo);
+
+console.log(touche);
 ---
 
 <Layout>
   <div>
-    {aquali.map((pokemon) =>
-    <h3>{pokemon.name}</h3>
-    <div>
-    <p>{pokemon.stats.hp}</p>
-    </div>
-    )}
+    <form>
+      <input class="input-choice" placeholder="Choisissez votre compagnon" />
+      <button id="choice">Choisir</button>
+    </form>
+    <div class="choice-log"></div>
   </div>
+  <button id="random-defender">Pokémon Défenseur Aléatoire</button>
+  <button class="btn">Combat !</button>
 </Layout>
+<script>
+  const buttonChoice = document.getElementById("choice");
+  const choice = document.querySelector(".input-choice").innerText;
+  buttonChoice?.addEventListener("click", (event) => {
+    event.preventDefault();
+    console.log(choice);
+    let choiceDiv = document.querySelector(".choice-log");
+  });
+</script>

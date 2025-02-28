@@ -1,10 +1,17 @@
 import { getPokemon } from "./pokemonFetch";
 
-function calculDamage(attaquant, defenseur) {
+function calculDamage(attaquant) {
   let multiplicateur = Math.random();
   let damage = attaquant.attack * multiplicateur;
   damage = Math.trunc(damage);
   return damage;
+}
+
+function calculDefense(defenseur) {
+  let multiplicateur = Math.random();
+  let bonus = defenseur.defense * multiplicateur;
+  bonus = Math.trunc(bonus);
+  return bonus;
 }
 
 class Pokemon {
@@ -19,8 +26,10 @@ class Pokemon {
   }
 
   useAttack(defenseur) {
-    const degats = calculDamage(this, defenseur);
-    defenseur.hp -= degats;
+    const degats = calculDamage(this);
+    const health = calculDefense(defenseur);
+    defenseur.hp = degats + health;
+    return `Il reste ${defenseur.hp} points de vie à ${defenseur.name}.`;
   }
 }
 
