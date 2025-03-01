@@ -2,47 +2,88 @@
 import Layout from "../layouts/Layout.astro";
 import { getPokemon } from "../services/pokemonFetch";
 import { createPokemon } from "../services/pokemonCombat";
+import { Image } from "astro:assets";
 
-const chosenPokemon = "aquali";
+const atkArray = [
+  "ronflex",
+  "lokhlass",
+  "mewtwo",
+  "feunard",
+  "tyranocif",
+  "dracaufeu",
+  "tortank",
+];
+const attaquantIndex = Math.floor(Math.random() * atkArray.length);
+const attaquant = atkArray[attaquantIndex];
+const atkPokemon = await getPokemon([attaquant]);
+const atk = createPokemon(atkPokemon);
 
-const aquali = await getPokemon([chosenPokemon]);
+const defArray = [
+  "ronflex",
+  "lokhlass",
+  "mewtwo",
+  "feunard",
+  "tyranocif",
+  "dracaufeu",
+  "tortank",
+];
+const defenseurIndex = Math.floor(Math.random() * defArray.length);
+const defenseur = defArray[defenseurIndex];
+const defPokemon = await getPokemon([defenseur]);
+const def = createPokemon(defPokemon);
 
-console.log(aquali);
-
-const newPokemon = createPokemon(aquali);
-
-console.log(newPokemon);
-
-const defender = "mentali";
-
-const mentali = await getPokemon([defender]);
-
-const pokemonTwo = createPokemon(mentali);
-
-console.log(pokemonTwo);
-
-const touche = newPokemon.useAttack(pokemonTwo);
-
-console.log(touche);
+console.log(atk, def);
 ---
 
 <Layout>
-  <div>
-    <form>
-      <input class="input-choice" placeholder="Choisissez votre compagnon" />
-      <button id="choice">Choisir</button>
-    </form>
-    <div class="choice-log"></div>
+  <div class="combat-card">
+    <div class="pokemon flex flex-columns justify-evenly">
+      <div class="attaquant">
+        {atk.name}
+        <Image
+          src={atk.image}
+          alt="Image"
+          class="mb-6"
+          width="300"
+          height="300"
+        />
+      </div>
+
+      <div class="defenseur">
+        {def.name}
+        <Image
+          src={def.image}
+          alt="Image"
+          class="mb-6"
+          width="300"
+          height="300"
+        />
+      </div>
+    </div>
   </div>
-  <button id="random-defender">Pokémon Défenseur Aléatoire</button>
-  <button class="btn">Combat !</button>
+  <button id="attaquant-btn">Dévoiler les pokémons!</button>
+  <button id="combat" class="pokemon">Combat !</button>
+  <script>
+    import { useAttack } from "../services/pokemonCombat";
+    const atkbutton = document.getElementById("attaquant-btn");
+    const combatButton = document.getElementById("combat");
+
+    atkbutton?.addEventListener("click", (event) => {
+      event.preventDefault;
+      const pokemonCard = document.querySelector(".pokemon");
+      pokemonCard?.classList.remove("pokemon");
+      combatButton?.classList.remove("pokemon");
+      atkbutton.classList.add("pokemon");
+    });
+
+    combatButton?.addEventListener("click", () => {
+      useAttack(atk, def);
+    });
+  </script>
 </Layout>
-<script>
-  const buttonChoice = document.getElementById("choice");
-  const choice = document.querySelector(".input-choice").innerText;
-  buttonChoice?.addEventListener("click", (event) => {
-    event.preventDefault();
-    console.log(choice);
-    let choiceDiv = document.querySelector(".choice-log");
-  });
-</script>
+
+<style>
+  .pokemon {
+    display: none;
+  }
+</style>
