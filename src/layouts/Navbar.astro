@@ -1,52 +1,59 @@
 ---
 import { Image } from "astro:assets";
 import Menu from "../assets/menu.svg";
+import CloseMenu from "../assets/close-menu.svg";
 ---
 
 <header class="bg-teal-50">
   <section
-    class="max-w-[90dvw] mx-auto px-8 py-4 flex justify-between items-center"
+    class="md:max-w-[90dvw] mx-auto px-8 py-4 flex justify-between items-center"
   >
     <h2>
       <a href="/">🐦‍🔥 PokeTeam</a>
     </h2>
     <div>
-      <button id="hamburger-button" class="text-3xl md:hidden cursor-pointer">
-        &#9776;
-      </button>
+      <Image
+        src={Menu}
+        id="hamburger-button"
+        alt="Menu"
+        class="cursor-pointer md:hidden"
+      />
       <nav class="hidden md:block space-x-8 text-xl" aria-label="main">
         <a href="#" class="hover:opacity-90">Team</a>
         <a href="/combat" class="hover:opacity-90">Combats</a>
         <a href="#" class="hover:opacity-90">Statistiques</a>
       </nav>
     </div>
-    <!-- <ul>
-      <li><h4><a href="#">Team</a></h4></li>
-      <li><h4><a href="/combat">Combats</a></h4></li>
-      <li><h4><a href="#">Statistiques</a></h4></li>
-      <div class="menu-titles">
-        <li><a href="">Team</a></li>
-        <li><a href="">Combats</a></li>
-        <li><a href="">Statistiques</a></li>
-      </div>
-    </ul> -->
   </section>
   <section
     id="mobile-menu"
-    class="absolute top-0 z-10 bg-teal-50 w-full text-5xl flex-col justify-content-center origin-top hidden"
+    class="absolute top-0 b-0 z-10 bg-indigo-200 w-full h-full text-5xl flex-col justify-content-center origin-top hidden transition-opacity duration-100"
   >
-    <button class="text-8xl self-end px-6"> &times; </button>
+    <Image
+      src={CloseMenu}
+      alt="close-menu"
+      class="cursor-pointer md:hidden self-end py-7 mx-8 scale-150"
+    />
+    <h2 class="mx-auto">
+      <a href="/">🐦‍🔥 PokeTeam 🐦‍🔥</a>
+    </h2>
     <nav
       class="flex flex-col min-h-screen items-center py-8"
       arial-label="mobile"
     >
-      <a href="#" class="w-full text-center py-6 hover:opacity-90"> Team </a>
-      <a href="/combat" class="w-full text-center py-6 hover:opacity-90">
-        Combat
-      </a>
-      <a href="#" class="w-full text-center py-6 hover:opacity-90">
-        Statistiques
-      </a>
+      <h3 class="w-full text-center py-6 hover:opacity-90">
+        <a href="#"> Team </a>
+      </h3>
+      <h3 class="w-full text-center py-6 hover:opacity-90">
+        <a href="/combat" class="w-full text-center py-6 hover:opacity-90">
+          Combat
+        </a>
+      </h3>
+      <h3 class="w-full text-center py-6 hover:opacity-90">
+        <a href="#" class="w-full text-center py-6 hover:opacity-90">
+          Statistiques
+        </a>
+      </h3>
     </nav>
   </section>
 </header>
@@ -54,28 +61,14 @@ import Menu from "../assets/menu.svg";
 <script>
   const hamburgerBtn = document.getElementById("hamburger-button");
   const mobileMenu = document.getElementById("mobile-menu");
+  const body = document.querySelector("body");
 
   const toggleMenu = () => {
     mobileMenu?.classList.toggle("hidden");
     mobileMenu?.classList.toggle("flex");
+    body?.classList.toggle("opened-menu");
   };
 
   hamburgerBtn?.addEventListener("click", toggleMenu);
   mobileMenu?.addEventListener("click", toggleMenu);
 </script>
-
-<style>
-  /* header {
-    width: 100%;
-  }
-
-  nav {
-    max-width: 1200px;
-  }
-
-  @media (width > 1280px) {
-    nav {
-      max-width: 90%;
-    }
-  } */
-</style>
