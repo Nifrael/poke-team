@@ -21,7 +21,11 @@ const pokemonsData = await getPokemon(names);
   <div class="big-grid py-10 w-[80%] mx-auto">
     {
       pokemonsData.map((pokemon) => (
-        <div class="card my-6 mx-auto grid grid-cols-2 grid-rows-3-auto bg-white/30 backdrop-blur-xl">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="700"
+          class="card my-6 mx-auto grid grid-cols-2 grid-rows-3-auto bg-white/30 backdrop-blur-xl"
+        >
           <img
             class="row-[1] col-span-2 mx-auto w-[60%]"
             src={pokemon.image}
