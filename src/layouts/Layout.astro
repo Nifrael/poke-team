@@ -3,6 +3,7 @@ const title = "PokeTeam";
 import "../styles/global.css";
 import Navbar from "./Navbar.astro";
 import Footer from "./Footer.astro";
+import { ClientRouter } from "astro:transitions";
 ---
 
 <html lang="fr">
@@ -12,6 +13,7 @@ import Footer from "./Footer.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ClientRouter />
   </head>
   <body>
     <Navbar />
@@ -19,5 +21,6 @@ import Footer from "./Footer.astro";
       <slot />
     </main>
     <Footer />
+    <script src="../javascript/aos.js"></script>
   </body>
 </html>
