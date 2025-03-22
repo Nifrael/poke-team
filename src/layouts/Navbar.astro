@@ -59,16 +59,21 @@ import CloseMenu from "../assets/close-menu.svg";
 </header>
 
 <script>
-  const hamburgerBtn = document.getElementById("hamburger-button");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const body = document.querySelector("body");
+  function listenMenu() {
+    const hamburgerBtn = document.getElementById("hamburger-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const body = document.querySelector("body");
 
-  const toggleMenu = () => {
-    mobileMenu?.classList.toggle("hidden");
-    mobileMenu?.classList.toggle("flex");
-    body?.classList.toggle("opened-menu");
-  };
+    const toggleMenu = () => {
+      mobileMenu?.classList.toggle("hidden");
+      mobileMenu?.classList.toggle("flex");
+      body?.classList.toggle("opened-menu");
+    };
 
-  hamburgerBtn?.addEventListener("click", toggleMenu);
-  mobileMenu?.addEventListener("click", toggleMenu);
+    hamburgerBtn?.addEventListener("click", toggleMenu);
+    mobileMenu?.addEventListener("click", toggleMenu);
+  }
+
+  document.addEventListener("DOMContentLoaded", listenMenu);
+  document.addEventListener("astro:after-swap", listenMenu);
 </script>
